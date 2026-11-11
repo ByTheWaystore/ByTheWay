@@ -1,0 +1,124 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ByTheWay | Digital Store</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#080808;color:white;font-family:Tahoma,Arial}
+header{padding:22px 8%;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #725a2c;background:#0c0c0c}
+.logo{color:#d4af37;font-size:27px;font-weight:bold}
+nav a{color:#ddd;text-decoration:none;margin:10px}
+nav a:hover{color:#d4af37}
+.hero{text-align:center;padding:100px 20px;background:radial-gradient(ellipse,#332817,#080808 70%)}
+.hero h1{font-size:45px}
+.hero h1 span{color:#d4af37}
+.hero p{color:#aaa;line-height:2}
+.btn{display:inline-block;background:linear-gradient(135deg,#f0d477,#b38b29);color:#080808;padding:12px 20px;border:0;border-radius:8px;text-decoration:none;font-weight:bold;cursor:pointer;margin-top:10px}
+.products{padding:50px 8%;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:22px}
+.card{background:#141414;border:1px solid #665126;border-radius:15px;padding:28px;transition:.3s}
+.card:hover{transform:translateY(-5px);border-color:#d4af37}
+.card h3{color:#d4af37}
+.card p{color:#aaa}
+.price{color:#e8c766;font-size:24px;font-weight:bold}
+.cart{margin:20px 8%;padding:25px;background:#141414;border:1px solid #665126;border-radius:12px}
+.cart h2{color:#d4af37}
+.cart-item{padding:10px;border-bottom:1px solid #333}
+footer{text-align:center;padding:35px;color:#999;border-top:1px solid #725a2c}
+footer h3{color:#d4af37}
+</style>
+</head>
+<body>
+
+<header>
+<div class="logo">ByTheWay</div>
+<nav>
+<a href="#home">الرئيسية</a>
+<a href="#products">المنتجات</a>
+<a href="#cart">السلة 🛒</a>
+<a href="https://discord.gg/p2yeMFKEc" target="_blank">تواصل معنا</a>
+</nav>
+</header>
+
+<section class="hero" id="home">
+<h1>Welcome to <span>ByTheWay</span></h1>
+<p>منتجات رقمية احترافية لسيرفرات FiveM</p>
+<a class="btn" href="#products">تصفح المنتجات</a>
+</section>
+
+<section class="products" id="products">
+
+<div class="card">
+<h3>FiveM HUD</h3>
+<p>واجهات احترافية ومميزة لسيرفرك.</p>
+<div class="price">25 ريال</div>
+<button class="btn" onclick="addToCart('FiveM HUD',25)">أضف إلى السلة 🛒</button>
+</div>
+
+<div class="card">
+<h3>Loading Screen</h3>
+<p>شاشات تحميل فخمة ومخصصة.</p>
+<div class="price">35 ريال</div>
+<button class="btn" onclick="addToCart('Loading Screen',35)">أضف إلى السلة 🛒</button>
+</div>
+
+<div class="card">
+<h3>Websites</h3>
+<p>مواقع إلكترونية حسب طلبك.</p>
+<div class="price">150 ريال</div>
+<button class="btn" onclick="addToCart('Website',150)">أضف إلى السلة 🛒</button>
+</div>
+
+</section>
+
+<section class="cart" id="cart">
+<h2>🛒 سلة المشتريات</h2>
+<div id="cartItems">السلة فارغة حالياً</div>
+<h3 id="total">الإجمالي: 0 ريال</h3>
+<a class="btn" href="https://discord.gg/p2yeMFKEc" target="_blank">إتمام الطلب عبر Discord</a>
+</section>
+
+<footer id="contact">
+<h3>ByTheWay</h3>
+<p>للطلب والاستفسار تواصل معنا</p>
+<a class="btn" href="https://discord.gg/p2yeMFKEc" target="_blank">انضم إلى Discord</a>
+<p>© 2026 ByTheWay</p>
+</footer>
+
+<script>
+let cart = [];
+
+function addToCart(name, price) {
+  cart.push({name, price});
+  renderCart();
+}
+
+function removeItem(index) {
+  cart.splice(index, 1);
+  renderCart();
+}
+
+function renderCart() {
+  const items = document.getElementById("cartItems");
+  const total = document.getElementById("total");
+
+  if (cart.length === 0) {
+    items.innerHTML = "السلة فارغة حالياً";
+  } else {
+    items.innerHTML = cart.map((item,index) =>
+      `<div class="cart-item">
+        ${item.name} - ${item.price} ريال
+        <button onclick="removeItem(${index})">حذف</button>
+      </div>`
+    ).join("");
+  }
+
+  const sum = cart.reduce((s,item) => s + item.price, 0);
+  total.textContent = "الإجمالي: " + sum + " ريال";
+}
+</script>
+
+</body>
+</html>
