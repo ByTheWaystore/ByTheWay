@@ -1,10 +1,11 @@
-
+```html
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>ByTheWay | Digital Store</title>
+
 <style>
 *{box-sizing:border-box}
 body{margin:0;background:#080808;color:white;font-family:Tahoma,Arial}
@@ -28,8 +29,14 @@ nav a:hover{color:#d4af37}
 .cart-item{padding:10px;border-bottom:1px solid #333}
 footer{text-align:center;padding:35px;color:#999;border-top:1px solid #725a2c}
 footer h3{color:#d4af37}
+@media(max-width:600px){
+header{flex-direction:column;gap:15px}
+nav a{margin:5px}
+.hero h1{font-size:32px}
+}
 </style>
 </head>
+
 <body>
 
 <header>
@@ -38,7 +45,7 @@ footer h3{color:#d4af37}
 <a href="#home">الرئيسية</a>
 <a href="#products">المنتجات</a>
 <a href="#cart">السلة 🛒</a>
-<a href="https://discord.gg/p2yeMFKEc" target="_blank">تواصل معنا</a>
+<a href="https://discord.gg/yjW6EnRtS" target="_blank">تواصل معنا</a>
 </nav>
 </header>
 
@@ -77,13 +84,13 @@ footer h3{color:#d4af37}
 <h2>🛒 سلة المشتريات</h2>
 <div id="cartItems">السلة فارغة حالياً</div>
 <h3 id="total">الإجمالي: 0 ريال</h3>
-<a class="btn" href="https://discord.gg/p2yeMFKEc" target="_blank">إتمام الطلب عبر Discord</a>
+<a class="btn" href="https://discord.gg/yjW6EnRtS" target="_blank">إتمام الطلب عبر Discord</a>
 </section>
 
 <footer id="contact">
 <h3>ByTheWay</h3>
 <p>للطلب والاستفسار تواصل معنا</p>
-<a class="btn" href="https://discord.gg/p2yeMFKEc" target="_blank">انضم إلى Discord</a>
+<a class="btn" href="https://discord.gg/yjW6EnRtS" target="_blank">انضم إلى Discord</a>
 <p>© 2026 ByTheWay</p>
 </footer>
 
@@ -122,3 +129,4 @@ function renderCart() {
 
 </body>
 </html>
+```
